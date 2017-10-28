@@ -1,0 +1,23 @@
+{
+  "name": "roverone",
+  "version": "1.0.0",
+  "description": "RoverOne",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sterpa/RoverOne.git"
+  },
+  "author": "Mikhail Belokoskov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sterpa/RoverOne/issues"
+  },
+  "homepage": "https://github.com/sterpa/RoverOne#readme",
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
