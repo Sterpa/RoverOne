@@ -11,6 +11,15 @@
          */
         constructor(opts) {
             this.el = opts.el;
+
+            this.render();
+        }
+
+        /**
+         * Создаем HTML
+         */
+        render() {
+            this.el.innerHTML = 'Form';
         }
     }
 

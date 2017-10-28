@@ -15,8 +15,9 @@
         */
         constructor(opts) {
             this.el = opts.el;
+            
             this.form = new Form({
-                el: el.querySelector('.js-form')
+                el: this.el.querySelector('.js-app-form')
             });
         }
     }
