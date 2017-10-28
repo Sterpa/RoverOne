@@ -6,16 +6,15 @@
     let Service = window.Service;
 
     /**
-     * Компонента "Форма"
+     * Компонента "Приложение"
      */
     class App {
         /**
-         * @param {Object} param0
-         * @param {HTMLElement} param0.el
-         */
-        constructor({el}) {
-            this.el = el;
-
+        * @constructor
+        * @param {Object} opts
+        */
+        constructor(opts) {
+            this.el = opts.el;
             this.form = new Form({
                 el: el.querySelector('.js-form')
             });
