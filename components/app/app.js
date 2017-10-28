@@ -11,7 +11,7 @@
      */
     class App {
         /**
-         * @param {Object} param0 
+         * @param {Object} param0
          * @param {HTMLElement} param0.el
          */
         constructor({el}) {
