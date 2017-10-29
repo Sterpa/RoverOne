@@ -32,7 +32,6 @@
          */
         render() {
             this.el.innerHTML = formTemplate(this.data);
-            console.log(JSON.stringify(this.data));
         }
     }
 
