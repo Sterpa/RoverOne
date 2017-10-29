@@ -1,0 +1,25 @@
+form.form__form
+    span.form__title
+        h3= title
+    fieldset
+        input.form__param(
+            type='text'
+            name='param'
+            placeholder='параметр: значение'
+        )
+        span &#160;
+        input.form__forceCmd(
+            type='text'
+            name='forceCmd'
+            placeholder='срочная команда'
+        )
+        span &#160;
+        input.form__cmd(
+            type='text'
+            name='cmd'
+            placeholder='команда'
+        )
+        span &#160;
+        button.form__button(
+            type='submit'
+        ) Send
