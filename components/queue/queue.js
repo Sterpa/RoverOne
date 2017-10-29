@@ -33,6 +33,20 @@
         render() {
             this.el.innerHTML = queueTemplate(this.data);
         }
+
+        /**
+         * Load data from server
+         * @return {Promise<*>}
+         */
+        loadData() {
+            return Service.getItems()
+            .then((resp) => {
+                this.data = resp;
+            })
+            .catch((error) => {
+                console.log('Error fetch(loadData): ' + error.message);
+            });
+        }
     }
 
     // export

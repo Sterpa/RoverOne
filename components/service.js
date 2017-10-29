@@ -1,4 +1,4 @@
-const BASE_URL = 'https://duna2chat.firebaseio.com/menu/menu1808.json';
+const BASE_URL = 'https://duna2chat.firebaseio.com/roverone.json';
 
 (function() {
     /**
