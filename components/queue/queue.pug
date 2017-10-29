@@ -1,0 +1,24 @@
+form.queue__form
+    fieldset.queue__fieldset
+        legend= title
+        textarea.queue__param(
+            readonly
+            name='param'
+            placeholder='нет данных'
+        )= JSON.stringify(cmds.param)
+        span &#160;
+        textarea.queue__forceCmd(
+            readonly
+            name='forceCmd'
+            placeholder='нет данных'
+        )= JSON.stringify(cmds.forceCmd)
+        span &#160;
+        textarea.queue__cmd(
+            readonly
+            name='cmd'
+            placeholder='нет данных'
+        )= JSON.stringify(cmds.cmd)
+        span &#160;
+        button.queue__button(
+            type='submit'
+        ) Обновить

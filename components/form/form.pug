@@ -1,7 +1,6 @@
 form.form__form
-    span.form__title
-        h3= title
-    fieldset
+    fieldset.form__fieldset
+        legend= title
         input.form__param(
             type='text'
             name='param'
@@ -22,4 +21,4 @@ form.form__form
         span &#160;
         button.form__button(
             type='submit'
-        ) Send
+        ) Отправить

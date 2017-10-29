@@ -2,9 +2,9 @@
     'use strict';
 
     /**
-     * Компонента "Передача команд"
+     * Компонента "Очередь команд"
      */
-    class Form {
+    class Queue {
         /**
          * @constructor
          * @param {Object} opts
@@ -12,7 +12,7 @@
         constructor(opts) {
             this.el = opts.el;
             this.data = {
-                title: 'Передача команд',
+                title: 'Очередь команд',
                 cmds: {
                     param: {
                         alt: 200,
@@ -31,10 +31,10 @@
          * Создаем HTML
          */
         render() {
-            this.el.innerHTML = formTemplate(this.data);
+            this.el.innerHTML = queueTemplate(this.data);
         }
     }
 
     // export
-    window.Form = Form;
+    window.Queue = Queue;
 })();
