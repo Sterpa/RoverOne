@@ -11,28 +11,17 @@
          */
         constructor(opts) {
             this.el = opts.el;
-            this.data = {
-                title: 'Передача команд',
-                cmds: {
-                    param: {
-                        alt: 200,
-                        speed: 100,
-                        dist: 2500
-                    },
-                    forceCmd: ['CMD1', 'CMD2'],
-                    cmd: ['CMD01', 'CMD02', 'CMD03']
-                }
-            };
+            this.user = opts.user;
 
             this.render();
-            this._myInitEvents();
+            this._InitEvents();
         }
 
         /**
          * Создаем HTML
          */
         render() {
-            this.el.innerHTML = formTemplate(this.data);
+            this.el.innerHTML = formTemplate(this.user);
         }
 
         /**
@@ -40,24 +29,27 @@
          * @return {Promise<*>}
          */
         uploadData() {
-            return Service.putItems(this.data.cmds)
+            return Service.putItems(this.user)
             .catch((error) => {
                 console.log('Error fetch(uploadData): ' + error.message);
             });
         }
 
         /**
-        * Триггер
+        * Парсим отправляемые параметры и команды
         * @param {Event} event
         */
-        _myTrigger(event) {
-            event.preventDefault(); // Отмена действия браeзера 'submit' по-умолчанию для формы
-            let eventData = {
-                param: JSON.parse(this.el.querySelector('input[name="param"]').value),
-                forceCmd: JSON.parse(this.el.querySelector('input[name="forceCmd"]').value),
-                cmd: JSON.parse(this.el.querySelector('input[name="cmd"]').value)
+        _submitEvent(event) {
+            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
+            let params = this.el.querySelector('input[name="params"]').value;
+            let forceCmds = this.el.querySelector('input[name="forceCmds"]').value;
+            let cmds = this.el.querySelector('input[name="cmds"]').value;
+            this.user.data.gui = {
+                params: JSON.parse(params),
+                forceCmds: JSON.parse(forceCmds),
+                cmds: JSON.parse(cmds),
+                sendTime: new Date()
             };
-            this.data.cmds = eventData;
             this.uploadData();
             event.target.reset();
         }
@@ -65,8 +57,8 @@
         /**
         * Развешиваем события
         */
-        _myInitEvents() {
-            this.el.addEventListener('submit', this._myTrigger.bind(this));
+        _InitEvents() {
+            this.el.addEventListener('submit', this._submitEvent.bind(this));
         }
     }
 

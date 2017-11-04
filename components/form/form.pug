@@ -1,24 +1,24 @@
 form.form__form
     fieldset.form__fieldset
-        legend= title
+        legend= translation.form_legend[lang]
         input.form__param(
             type='text'
-            name='param'
-            placeholder='параметр: значение'
+            name='params'
+            placeholder=translation.form_input1_placeholder[lang]
         )
         span &#160;
         input.form__forceCmd(
             type='text'
-            name='forceCmd'
-            placeholder='срочная команда'
+            name='forceCmds'
+            placeholder=translation.form_input2_placeholder[lang]
         )
         span &#160;
         input.form__cmd(
             type='text'
-            name='cmd'
-            placeholder='команда'
+            name='cmds'
+            placeholder=translation.form_input3_placeholder[lang]
         )
         span &#160;
         button.form__button(
             type='submit'
-        ) Отправить
+        )= translation.form_button_submit[lang]

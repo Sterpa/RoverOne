@@ -1,24 +1,24 @@
 form.queue__form
     fieldset.queue__fieldset
-        legend= title
+        legend= translation.queue_legend[lang]
         textarea.queue__param(
             readonly
-            name='param'
-            placeholder='нет данных'
-        )= JSON.stringify(cmds.param)
+            name='params'
+            placeholder=translation.queue_textarea1_placeholder[lang]
+        )= JSON.stringify(data.dev.params)
         span &#160;
         textarea.queue__forceCmd(
             readonly
-            name='forceCmd'
-            placeholder='нет данных'
-        )= JSON.stringify(cmds.forceCmd)
+            name='forceCmds'
+            placeholder=translation.queue_textarea2_placeholder[lang]
+        )= JSON.stringify(data.dev.forceCmds)
         span &#160;
         textarea.queue__cmd(
             readonly
-            name='cmd'
-            placeholder='нет данных'
-        )= JSON.stringify(cmds.cmd)
+            name='cmds'
+            placeholder=translation.queue_textarea3_placeholder[lang]
+        )= JSON.stringify(data.dev.cmds)
         span &#160;
         button.queue__button(
             type='submit'
-        ) Обновить
+        )= translation.queue_button_submit[lang]

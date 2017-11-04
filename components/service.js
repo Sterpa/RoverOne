@@ -1,5 +1,3 @@
-const BASE_URL = 'https://duna2chat.firebaseio.com/roverone.json';
-
 (function() {
     /**
      * Data source for links collection
@@ -38,11 +36,11 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone.json';
 
         /**
          * Update collections
-         * @param {Object} links
+         * @param {Object} user
          * @return {Promise<*>}
          */
-        static putItems(links) {
-            return this._makeRequest('PUT', BASE_URL, links)
+        static putItems(user) {
+            return this._makeRequest('PUT', user.url.gui, user.data.gui)
             .catch((error) => {
                 console.log('Error fetch(putItems): ' + error.message);
             });
