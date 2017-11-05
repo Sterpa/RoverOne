@@ -12,9 +12,10 @@
         constructor(opts) {
             this.el = opts.el;
             this.user = opts.user;
+            this.name = ['params', 'forceCmds', 'cmds'];
 
             this.render();
-            this._InitEvents();
+            this._initEvents();
         }
 
         /**
@@ -42,8 +43,17 @@
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
             let params = this.el.querySelector('input[name="params"]').value;
+            if (params[0] != '{') {
+                params = '{' + params + '}';
+            }
             let forceCmds = this.el.querySelector('input[name="forceCmds"]').value;
+            if (forceCmds[0] != '[') {
+                forceCmds = '[' + forceCmds + ']';
+            }
             let cmds = this.el.querySelector('input[name="cmds"]').value;
+            if (cmds[0] != '[') {
+                cmds = '[' + cmds + ']';
+            }
             this.user.data.gui = {
                 params: JSON.parse(params),
                 forceCmds: JSON.parse(forceCmds),
@@ -57,7 +67,7 @@
         /**
         * Развешиваем события
         */
-        _InitEvents() {
+        _initEvents() {
             this.el.addEventListener('submit', this._submitEvent.bind(this));
         }
     }

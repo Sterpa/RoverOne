@@ -23,7 +23,8 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
             this.user = {
                 url: {
                     gui: '',
-                    dev: ''
+                    dev: '',
+                    data: ''
                 },
                 lang: 1,
                 data: {
@@ -59,13 +60,14 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
         }
 
         /**
-         * Get database url
+         * Set database url
          * @param {String} userId
          * @param {String} devId
          */
         _setUserUrl(userId, devId) {
             this.user.url.gui = BASE_URL + '/' + userId + '/' + devId + '/gui.json';
             this.user.url.dev = BASE_URL + '/' + userId + '/' + devId + '/dev.json';
+            this.user.url.data = BASE_URL + '/' + userId + '/' + devId + '.json';
         }
     }
 

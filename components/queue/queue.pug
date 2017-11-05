@@ -5,19 +5,19 @@ form.queue__form
             readonly
             name='params'
             placeholder=translation.queue_textarea1_placeholder[lang]
-        )= JSON.stringify(data.dev.params)
+        )= JSON.stringify(data.gui.params)
         span &#160;
         textarea.queue__forceCmd(
             readonly
             name='forceCmds'
             placeholder=translation.queue_textarea2_placeholder[lang]
-        )= JSON.stringify(data.dev.forceCmds)
+        )= JSON.stringify(data.gui.forceCmds)
         span &#160;
         textarea.queue__cmd(
             readonly
             name='cmds'
             placeholder=translation.queue_textarea3_placeholder[lang]
-        )= JSON.stringify(data.dev.cmds)
+        )= JSON.stringify(data.gui.cmds)
         span &#160;
         button.queue__button(
             type='submit'

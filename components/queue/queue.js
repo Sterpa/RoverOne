@@ -14,6 +14,7 @@
             this.user = opts.user;
 
             this.render();
+            this._initEvents();
         }
 
         /**
@@ -28,13 +29,30 @@
          * @return {Promise<*>}
          */
         loadData() {
-            return Service.getItems()
+            return Service.getItems(this.user)
             .then((resp) => {
-                this.data = resp;
+                this.user.data = resp;
             })
             .catch((error) => {
                 console.log('Error fetch(loadData): ' + error.message);
             });
+        }
+
+        /**
+        * Парсим отправляемые параметры и команды
+        * @param {Event} event
+        */
+        _submitEvent(event) {
+            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
+            this.loadData();
+            this.render();
+        }
+
+        /**
+        * Развешиваем события
+        */
+        _initEvents() {
+            this.el.addEventListener('submit', this._submitEvent.bind(this));
         }
     }
 

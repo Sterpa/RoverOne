@@ -25,10 +25,11 @@
 
         /**
          * Get collection
+         * @param {Object} user
          * @return {Promise<*>}
          */
-        static getItems() {
-            return this._makeRequest('GET', BASE_URL, undefined)
+        static getItems(user) {
+            return this._makeRequest('GET', user.url.data, undefined)
             .catch((error) => {
                 console.log('Error fetch(getItems): ' + error.message);
             });
