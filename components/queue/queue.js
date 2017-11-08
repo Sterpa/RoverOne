@@ -32,6 +32,7 @@
             return Service.getItems(this.user)
             .then((resp) => {
                 this.user.data = resp;
+                this.render();
             })
             .catch((error) => {
                 console.log('Error fetch(loadData): ' + error.message);
@@ -44,10 +45,10 @@
         */
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
-            this.loadData()
-            .then((resp) => {
-                this.render();
-            });
+            this.loadData();
+            // .then((resp) => {
+                // this.render();
+            // });
         }
 
         /**
