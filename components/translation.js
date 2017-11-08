@@ -10,5 +10,6 @@ let translation = {
     queue_textarea1_placeholder: ['нет данных', 'n/a'],
     queue_textarea2_placeholder: ['нет данных', 'n/a'],
     queue_textarea3_placeholder: ['нет данных', 'n/a'],
+    queue_textarea4_placeholder: ['нет данных', 'n/a'],
     queue_button_submit: ['Обновить', 'Refresh']
 };

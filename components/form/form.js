@@ -54,7 +54,7 @@
             if (cmds[0] != '[') {
                 cmds = '[' + cmds + ']';
             }
-            this.user.data.gui = {
+            this.user.data.guiLocal = {
                 params: JSON.parse(params),
                 forceCmds: JSON.parse(forceCmds),
                 cmds: JSON.parse(cmds),

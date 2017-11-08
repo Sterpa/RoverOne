@@ -19,6 +19,12 @@ form.queue__form
             placeholder=translation.queue_textarea3_placeholder[lang]
         )= JSON.stringify(data.gui.cmds)
         span &#160;
+        textarea.queue__sendTime(
+            readonly
+            name='sendTime'
+            placeholder=translation.queue_textarea4_placeholder[lang]
+        )= JSON.stringify(data.gui.sendTime)
+        span &#160;
         button.queue__button(
             type='submit'
         )= translation.queue_button_submit[lang]

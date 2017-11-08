@@ -44,8 +44,10 @@
         */
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
-            this.loadData();
-            this.render();
+            this.loadData()
+            .then((resp) => {
+                this.render();
+            });
         }
 
         /**
