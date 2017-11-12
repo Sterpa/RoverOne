@@ -37,31 +37,43 @@
         }
 
         /**
-        * Парсим отправляемые параметры и команды
+        * Парсим и отправляем параметры и команды
         * @param {Event} event
+        * @return {Promise<*>}
         */
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
-            let params = this.el.querySelector('input[name="params"]').value;
+            let params = this.el.querySelector('textarea[name="params"]').value;
             if (params[0] != '{') {
                 params = '{' + params + '}';
-            }
-            let forceCmds = this.el.querySelector('input[name="forceCmds"]').value;
+            };
+            let forceCmds = this.el.querySelector('textarea[name="forceCmds"]').value;
             if (forceCmds[0] != '[') {
                 forceCmds = '[' + forceCmds + ']';
-            }
-            let cmds = this.el.querySelector('input[name="cmds"]').value;
+            };
+            let cmds = this.el.querySelector('textarea[name="cmds"]').value;
             if (cmds[0] != '[') {
                 cmds = '[' + cmds + ']';
-            }
-            this.user.data.guiLocal = {
-                params: JSON.parse(params),
-                forceCmds: JSON.parse(forceCmds),
-                cmds: JSON.parse(cmds),
-                sendTime: new Date()
             };
-            this.uploadData();
-            event.target.reset();
+            try {
+                this.user.data.guiLocal = {
+                    params: JSON.parse(params),
+                    forceCmds: JSON.parse(forceCmds),
+                    cmds: JSON.parse(cmds),
+                    sendTime: new Date()
+                };
+            } catch (error) {
+                alert('Ошибка ' + error.name + ': ' + error.message + '\n' + error.stack);
+                console.log(error);
+                return;
+            };
+            return this.uploadData()
+            .then((resp) => {
+                event.target.reset();
+            })
+            .catch((error) => {
+                console.log('Error fetch(_refresh): ' + error.message);
+            });
         }
 
         /**

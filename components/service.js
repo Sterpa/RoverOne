@@ -16,8 +16,8 @@
                 body: JSON.stringify(data)
             };
             return fetch(url, options)
-            .then((response) => {
-                return response.json();
+            .then((resp) => {
+                return resp.json();
             })
             .catch((error) => {
                 console.log('Error fetch(_makeRequest): ' + error.message);

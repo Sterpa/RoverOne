@@ -1,22 +1,19 @@
 form.form__form
     fieldset.form__fieldset
         legend= translation.form_legend[lang]
-        input.form__param(
-            type='text'
+        textarea.form__param(
             name='params'
-            placeholder=translation.form_input1_placeholder[lang]
+            placeholder=translation.form_textarea1_placeholder[lang]
         )
         span &#160;
-        input.form__forceCmd(
-            type='text'
+        textarea.form__forceCmd(
             name='forceCmds'
-            placeholder=translation.form_input2_placeholder[lang]
+            placeholder=translation.form_textarea2_placeholder[lang]
         )
         span &#160;
-        input.form__cmd(
-            type='text'
+        textarea.form__cmd(
             name='cmds'
-            placeholder=translation.form_input3_placeholder[lang]
+            placeholder=translation.form_textarea3_placeholder[lang]
         )
         span &#160;
         button.form__button(

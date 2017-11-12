@@ -32,8 +32,15 @@
         <script>
             "use strict";
             new window.App({
-                el: document.querySelector('.js-app')
+                el: document.querySelector('.js-app'),
+                userId: 'user1234',
+                devId: 'dev12345'
             });
+
+            //window.onerror = function(message, url, lineNumber) {
+                //alert('Поймана ошибка, выпавшая в глобальную область!\n' +
+                //'Сообщение: ' + message + '\n(' + url + ':' + lineNumber + ')');
+            //};
         </script>
     </body>
 </html>

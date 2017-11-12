@@ -18,16 +18,16 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
         */
         constructor(opts) {
             this.el = opts.el;
-            this.userId = 'user1234';
-            this.devId = 'dev12345';
+            this.userId = opts.userId;
+            this.devId = opts.devId;
             this.user = {
+                lang: 0,
                 url: {
                     gui: '',
                     guiLocal: '',
                     dev: '',
                     data: ''
                 },
-                lang: 0,
                 data: {
                     gui: {
                         params: {},

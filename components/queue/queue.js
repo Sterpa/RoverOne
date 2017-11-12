@@ -25,7 +25,7 @@
         }
 
         /**
-         * Load data from server
+         * Load data from server and render
          * @return {Promise<*>}
          */
         loadData() {
@@ -33,21 +33,24 @@
             .then((resp) => {
                 this.user.data = resp;
             })
+            .then((resp) => {
+                this.render();
+            })
             .catch((error) => {
                 console.log('Error fetch(loadData): ' + error.message);
             });
         }
 
         /**
-        * Парсим отправляемые параметры и команды
+        * Обработка события submit (refresh) на queue
         * @param {Event} event
         * @return {Promise<*>}
         */
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
             return this.loadData()
-            .then((resp) => {
-                this.render();
+            .catch((error) => {
+                console.log('Error fetch(_submitEvent): ' + error.message);
             });
         }
 
