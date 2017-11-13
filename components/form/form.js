@@ -26,23 +26,10 @@
         }
 
         /**
-         * Upload data to the server
+         * Upload data to the server and reset
          * @return {Promise<*>}
          */
         uploadData() {
-            return Service.putItems(this.user)
-            .catch((error) => {
-                console.log('Error fetch(uploadData): ' + error.message);
-            });
-        }
-
-        /**
-        * Парсим и отправляем параметры и команды
-        * @param {Event} event
-        * @return {Promise<*>}
-        */
-        _submitEvent(event) {
-            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
             let params = this.el.querySelector('textarea[name="params"]').value;
             if (params[0] != '{') {
                 params = '{' + params + '}';
@@ -63,16 +50,31 @@
                     sendTime: new Date()
                 };
             } catch (error) {
-                alert('Ошибка ' + error.name + ': ' + error.message + '\n' + error.stack);
+                alert('Error ' + error.stack);
                 console.log(error);
-                return;
+                return new Promise((resolve, reject) => {
+                    //throw error;
+                });
             };
-            return this.uploadData()
+            return Service.putItems(this.user)
             .then((resp) => {
-                event.target.reset();
+                this.render();
             })
             .catch((error) => {
-                console.log('Error fetch(_refresh): ' + error.message);
+                console.log('Error fetch(uploadData): ' + error.stack);
+            });
+        }
+
+        /**
+        * Обработка события submit (send) на form и reset
+        * @param {Event} event
+        * @return {Promise<*>}
+        */
+        _submitEvent(event) {
+            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
+            return this.uploadData()
+            .catch((error) => {
+                console.log('Error fetch(_submitEvent): ' + error.stack);
             });
         }
 

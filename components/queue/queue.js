@@ -15,6 +15,7 @@
 
             this.render();
             this._initEvents();
+            this.timerId = setInterval(this.loadData.bind(this), 1000);
         }
 
         /**
@@ -37,7 +38,7 @@
                 this.render();
             })
             .catch((error) => {
-                console.log('Error fetch(loadData): ' + error.message);
+                console.log('Error fetch(loadData): ' + error.stack);
             });
         }
 
@@ -50,7 +51,7 @@
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
             return this.loadData()
             .catch((error) => {
-                console.log('Error fetch(_submitEvent): ' + error.message);
+                console.log('Error fetch(_submitEvent): ' + error.stack);
             });
         }
 

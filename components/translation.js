@@ -1,7 +1,7 @@
 'use strict';
 
 let translation = {
-    form_legend: ['Передача команд', 'Send commands'],
+    form_legend: ['Отправить команды', 'Send commands'],
     form_textarea1_placeholder: ['параметр: значение', 'param: value'],
     form_textarea2_placeholder: ['срочная команда', 'force command'],
     form_textarea3_placeholder: ['команда', 'command'],
