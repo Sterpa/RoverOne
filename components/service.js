@@ -20,7 +20,7 @@
                 return resp.json();
             })
             .catch((error) => {
-                console.log('Error fetch(_makeRequest): ' + error.stack);
+                console.log(`Error (fetch) ${error.stack}`);
             });
         }
 
@@ -32,7 +32,7 @@
         static getData(user) {
             return this._makeRequest('GET', user.url.data, undefined)
             .catch((error) => {
-                console.log('Error fetch(getData): ' + error.stack);
+                console.log(`Error (_makeRequest) ${error.stack}`);
             });
         }
 
@@ -44,7 +44,7 @@
         static putData(user) {
             return this._makeRequest('PUT', user.url.data, user.dataLocal)
             .catch((error) => {
-                console.log('Error fetch(putData): ' + error.stack);
+                console.log(`Error (_makeRequest) ${error.stack}`);
             });
         }
 
@@ -56,7 +56,7 @@
         static putGui(user) {
             return this._makeRequest('PUT', user.url.gui, user.dataLocal.gui)
             .catch((error) => {
-                console.log('Error fetch(putGui): ' + error.stack);
+                console.log(`Error (_makeRequest) ${error.stack}`);
             });
         }
 
@@ -68,7 +68,7 @@
         static putDev(user) {
             return this._makeRequest('PUT', user.url.dev, user.dataLocal.dev)
             .catch((error) => {
-                console.log('Error fetch(putDev): ' + error.stack);
+                console.log(`Error (_makeRequest) ${error.stack}`);
             });
         }
     }
