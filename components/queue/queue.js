@@ -15,7 +15,7 @@
 
             this.render();
             this._initEvents();
-            this.timerId = setInterval(this.loadData.bind(this), 1000);
+            //this.timerId = setInterval(this.loadData.bind(this), 1000);
         }
 
         /**
@@ -33,8 +33,13 @@
             return Service.getItems(this.user)
             .then((resp) => {
                 this.user.data = resp;
+                console.log(resp);
             })
             .then((resp) => {
+                console.log(this.user);
+                //this.user.data = {};
+                this.user.data.gui = {};
+                console.log(this.user);
                 this.render();
             })
             .catch((error) => {

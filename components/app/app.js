@@ -24,7 +24,6 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 lang: 0,
                 url: {
                     gui: '',
-                    guiLocal: '',
                     dev: '',
                     data: ''
                 },
@@ -35,7 +34,18 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                         cmds: [],
                         sendTime: 0
                     },
-                    guiLocal: {
+                    dev: {
+                        params: [{}],
+                        forceCmds: [[]],
+                        cmds: [[]],
+                        sendTime: [],
+                        queue: [],
+                        done: [],
+                        getTime: []
+                    }
+                },
+                dataLocal: {
+                    gui: {
                         params: {},
                         forceCmds: [],
                         cmds: [],
@@ -45,9 +55,26 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                         params: [{}],
                         forceCmds: [[]],
                         cmds: [[]],
+                        sendTime: [],
                         queue: [],
                         done: [],
+                        getTime: []
+                    }
+                },
+                dataDev: {
+                    gui: {
+                        params: {},
+                        forceCmds: [],
+                        cmds: [],
+                        sendTime: 0
+                    },
+                    dev: {
+                        params: [{}],
+                        forceCmds: [[]],
+                        cmds: [[]],
                         sendTime: [],
+                        queue: [],
+                        done: [],
                         getTime: []
                     }
                 }
@@ -72,10 +99,9 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
          * @param {String} devId
          */
         _setUserUrl(userId, devId) {
-            this.user.url.gui = BASE_URL + '/' + userId + '/' + devId + '/gui.json';
-            this.user.url.guiLocal = BASE_URL + '/' + userId + '/' + devId + '/guiLocal.json';
-            this.user.url.dev = BASE_URL + '/' + userId + '/' + devId + '/dev.json';
             this.user.url.data = BASE_URL + '/' + userId + '/' + devId + '.json';
+            this.user.url.gui = BASE_URL + '/' + userId + '/' + devId + '/gui.json';
+            this.user.url.dev = BASE_URL + '/' + userId + '/' + devId + '/dev.json';
         }
     }
 

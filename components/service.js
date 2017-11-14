@@ -25,26 +25,50 @@
         }
 
         /**
-         * Get collection
+         * Get collection Data
          * @param {Object} user
          * @return {Promise<*>}
          */
-        static getItems(user) {
+        static getData(user) {
             return this._makeRequest('GET', user.url.data, undefined)
             .catch((error) => {
-                console.log('Error fetch(getItems): ' + error.stack);
+                console.log('Error fetch(getData): ' + error.stack);
             });
         }
 
         /**
-         * Update collections
+         * Update collections Data
          * @param {Object} user
          * @return {Promise<*>}
          */
-        static putItems(user) {
-            return this._makeRequest('PUT', user.url.gui, user.data.guiLocal)
+        static putData(user) {
+            return this._makeRequest('PUT', user.url.data, user.dataLocal)
             .catch((error) => {
-                console.log('Error fetch(putItems): ' + error.stack);
+                console.log('Error fetch(putData): ' + error.stack);
+            });
+        }
+
+        /**
+         * Update collections Gui
+         * @param {Object} user
+         * @return {Promise<*>}
+         */
+        static putGui(user) {
+            return this._makeRequest('PUT', user.url.gui, user.dataLocal.gui)
+            .catch((error) => {
+                console.log('Error fetch(putGui): ' + error.stack);
+            });
+        }
+
+        /**
+         * Update collections Dev
+         * @param {Object} user
+         * @return {Promise<*>}
+         */
+        static putDev(user) {
+            return this._makeRequest('PUT', user.url.dev, user.dataLocal.dev)
+            .catch((error) => {
+                console.log('Error fetch(putDev): ' + error.stack);
             });
         }
     }
