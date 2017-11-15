@@ -50,7 +50,7 @@
                         sendTime: new Date()
                     };
                 } catch (error) {
-                    throw error;
+                   throw error;
                 };
                 resolve(this.user.dataLocal.gui);
             });
@@ -66,27 +66,20 @@
                 return Service.putGui(this.user)
                 .then((resp) => {
                     this.render();
-                })
-                .catch((error) => {
-                    console.log(`Error (putGui) ${error.stack}`);
                 });
             })
             .catch((error) => {
-                console.log(`Error (getNewDataLocal) ${error.stack}`);
+                console.log(`Error! ${error.stack}`);
             });
         }
 
         /**
         * Обработка события submit на форме
         * @param {Event} event
-         * @return {Promise<*>}
         */
         _submitEvent(event) {
             event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
-            return this.uploadData()
-            .catch((error) => {
-                console.log(`Error (uploadData) ${error.stack}`);
-            });
+            this.uploadData();
         }
 
         /**
@@ -94,6 +87,14 @@
         */
         _initEvents() {
             this.el.addEventListener('submit', this._submitEvent.bind(this));
+            //window.addEventListener('error', (error) => {
+                //console.log(`Error (putGui) ${error.stack}`).bind(this);
+            //});
+            //window.onerror = function(message, url, lineNumber) {
+                //alert('Поймана ошибка, выпавшая в глобальную область!\n' +
+                    //'Сообщение: ' + message + '\n(' + url + ':' + lineNumber + ')');
+            //};
+            //throw error;
         }
     }
 

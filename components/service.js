@@ -11,16 +11,26 @@
          * @return {Promise<*>}
          */
         static _makeRequest(method, url, data) {
-            let options = {
-                method: method,
-                body: JSON.stringify(data)
-            };
-            return fetch(url, options)
-            .then((resp) => {
-                return resp.json();
-            })
-            .catch((error) => {
-                console.log(`Error (fetch) ${error.stack}`);
+            return new Promise((resolve, reject) => {
+                let options = {};
+                try {
+                    options = {
+                        method: method,
+                        body: '',
+                        body: JSON.stringify(data)
+                    };
+                } catch (error) {
+                    throw error;
+                };
+                resolve(
+                    fetch(url, options)
+                    .then((resp) => {
+                        return resp.json();
+                    })
+                    .catch((error) => {
+                        throw error;
+                    })
+                );
             });
         }
 
@@ -30,10 +40,7 @@
          * @return {Promise<*>}
          */
         static getData(user) {
-            return this._makeRequest('GET', user.url.data, undefined)
-            .catch((error) => {
-                console.log(`Error (_makeRequest) ${error.stack}`);
-            });
+            return this._makeRequest('GET', user.url.data, undefined);
         }
 
         /**
@@ -42,10 +49,7 @@
          * @return {Promise<*>}
          */
         static putData(user) {
-            return this._makeRequest('PUT', user.url.data, user.dataLocal)
-            .catch((error) => {
-                console.log(`Error (_makeRequest) ${error.stack}`);
-            });
+            return this._makeRequest('PUT', user.url.data, user.dataLocal);
         }
 
         /**
@@ -55,9 +59,6 @@
          */
         static putGui(user) {
             return this._makeRequest('PUT', user.url.gui, user.dataLocal.gui)
-            .catch((error) => {
-                console.log(`Error (_makeRequest) ${error.stack}`);
-            });
         }
 
         /**
@@ -66,10 +67,7 @@
          * @return {Promise<*>}
          */
         static putDev(user) {
-            return this._makeRequest('PUT', user.url.dev, user.dataLocal.dev)
-            .catch((error) => {
-                console.log(`Error (_makeRequest) ${error.stack}`);
-            });
+            return this._makeRequest('PUT', user.url.dev, user.dataLocal.dev);
         }
     }
     // Export
