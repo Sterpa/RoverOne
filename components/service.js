@@ -11,7 +11,7 @@
          * @return {Promise<*>}
          */
         static _makeRequest(method, url, data) {
-            return new Promise((resolve, reject) => {
+            let p = new Promise((resolve, reject) => {
                 let options = {};
                 try {
                     options = {
@@ -20,17 +20,18 @@
                         body: JSON.stringify(data)
                     };
                 } catch (error) {
+                    // то же что reject(new Error("o_O"))
                     throw error;
                 };
-                resolve(
-                    fetch(url, options)
-                    .then((resp) => {
-                        return resp.json();
-                    })
-                    .catch((error) => {
-                        throw error;
-                    })
-                );
+                resolve(options);
+            });
+            return p
+            .then((options) => fetch(url, options))
+            .then((resp) => {
+                return resp.json();
+            })
+            .catch((error) => {
+                throw error;
             });
         }
 
@@ -58,7 +59,7 @@
          * @return {Promise<*>}
          */
         static putGui(user) {
-            return this._makeRequest('PUT', user.url.gui, user.dataLocal.gui)
+            return this._makeRequest('PUT', user.url.gui, user.dataLocal.gui);
         }
 
         /**

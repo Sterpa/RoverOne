@@ -52,25 +52,18 @@
                 } catch (error) {
                    throw error;
                 };
-                resolve(this.user.dataLocal.gui);
+                resolve(this.user);
             });
         }
 
         /**
          * Upload data to the server and render
-         * @return {Promise<*>}
          */
         uploadData() {
-            return this.getNewDataLocal()
-            .then((resp) => {
-                return Service.putGui(this.user)
-                .then((resp) => {
-                    this.render();
-                });
-            })
-            .catch((error) => {
-                console.log(`Error! ${error.stack}`);
-            });
+            this.getNewDataLocal()
+            .then((user) => Service.putGui(user))
+            .then((resp) => this.render())
+            .catch((error) => console.log(`Error! ${error.stack}`));
         }
 
         /**
