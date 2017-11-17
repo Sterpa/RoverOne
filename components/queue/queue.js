@@ -28,21 +28,30 @@
         }
 
         /**
+        * Проверка полученных данных на соответствие структуры
+        * @param {Object} data
+        * @return {Object}
+        */
+        _checkResp(data) {
+            let d = {};
+            d = data;
+            if (!d.gui) {
+                console.log(`Error! resp.gui = ${d.gui}`);
+                d.gui = this.user.dataLocal.gui;
+            };
+            if (!d.dev) {
+                console.log(`Error! resp.dev = ${d.dev}`);
+                d.dev = this.user.dataLocal.dev;
+            };
+            return d;
+        }
+
+        /**
          * Load data from server and render
          */
         loadData() {
             Service.getData(this.user)
-            .then((resp) => {
-                this.user.data = resp;
-                if (!this.user.data.gui) {
-                    console.log(`Error! resp.gui = ${resp.gui}`);
-                    this.user.data.gui = this.user.dataLocal.gui;
-                };
-                if (!this.user.data.dev) {
-                    console.log(`Error! resp.dev = ${resp.dev}`);
-                    this.user.data.dev = this.user.dataLocal.dev;
-                }
-            })
+            .then((resp) => this.user.data = this._checkResp(resp))
             .then((resp) => this.render())
             .catch((error) => console.log(`Error! ${error.stack}`));
         }

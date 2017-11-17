@@ -7,10 +7,14 @@ let translation = {
     form_textarea3_placeholder: ['команда', 'command'],
     form_button_submit: ['Отправить', 'Send'],
     queue_legend: ['Очередь команд', 'Queue of commands'],
+    queue_textarea_placeholder: ['нет данных', 'n/a'],
     queue_textarea1_placeholder: ['нет данных', 'n/a'],
     queue_textarea2_placeholder: ['нет данных', 'n/a'],
     queue_textarea3_placeholder: ['нет данных', 'n/a'],
     queue_textarea4_placeholder: ['нет данных', 'n/a'],
+    queue_textarea5_placeholder: ['нет данных', 'n/a'],
+    queue_textarea6_placeholder: ['нет данных', 'n/a'],
+    queue_textarea7_placeholder: ['нет данных', 'n/a'],
     queue_button_submit: ['Обновить', 'Refresh'],
     queue_button_start: ['Старт/Стоп', 'Start/Stop']
 };

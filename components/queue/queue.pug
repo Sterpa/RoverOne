@@ -34,4 +34,48 @@ form.queue__form
             data-action='run'
             style='color: '+ runColor
         )= translation.queue_button_start[lang]
-        
+
+        <br>
+        <br>
+
+        textarea.queue__param(
+            readonly
+            name='params'
+            placeholder=translation.queue_textarea1_placeholder[lang]
+        )= JSON.stringify(data.dev.params)
+        span &#160;
+        textarea.queue__forceCmd(
+            readonly
+            name='forceCmds'
+            placeholder=translation.queue_textarea2_placeholder[lang]
+        )= JSON.stringify(data.dev.forceCmds)
+        span &#160;
+        textarea.queue__cmd(
+            readonly
+            name='cmds'
+            placeholder=translation.queue_textarea3_placeholder[lang]
+        )= JSON.stringify(data.dev.cmds)
+        span &#160;
+        textarea.queue__sendTime(
+            readonly
+            name='sendTime'
+            placeholder=translation.queue_textarea4_placeholder[lang]
+        )= JSON.stringify(data.dev.sendTime)
+        span &#160;
+        textarea.queue__queue(
+            readonly
+            name='queue'
+            placeholder=translation.queue_textarea5_placeholder[lang]
+        )= JSON.stringify(data.dev.queue)
+        span &#160;
+        textarea.queue__done(
+            readonly
+            name='done'
+            placeholder=translation.queue_textarea6_placeholder[lang]
+        )= JSON.stringify(data.dev.done)
+        span &#160;
+        textarea.queue__getTime(
+            readonly
+            name='getTime'
+            placeholder=translation.queue_textarea7_placeholder[lang]
+        )= JSON.stringify(data.dev.getTime)
