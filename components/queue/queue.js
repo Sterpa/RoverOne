@@ -13,6 +13,7 @@
             this.el = opts.el;
             this.user = opts.user;
             this.user.run = 0;
+            this.user.runColor = 'black';
 
             this.render();
             this._initEvents();
@@ -51,7 +52,7 @@
         * @param {Event} event
         */
         _submitEvent(event) {
-            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для формы
+            event.preventDefault(); // Отмена действия браузера 'submit' по-умолчанию для queue
             this.loadData();
         }
 
@@ -60,22 +61,30 @@
         */
         _initEvents() {
             this.el.addEventListener('submit', this._submitEvent.bind(this));
-            this.el.addEventListener('click', this.run.bind(this));
+            this.el.addEventListener('click', this._onClick.bind(this));
          }
 
         /**
         * Включаем автообновление очереди команд
         * @param {Event} event
         */
-        run(event) {
-            if (event.target.dataset.run == 1) {
+        _onClick(event) {
+            //event.preventDefault(); // Отмена действия браузера 'click' по-умолчанию для queue
+            let item = event.target;
+            switch (item.dataset.action) {
+            case 'run':
                 if (!this.user.run) {
                     this.timerId = setInterval(this.loadData.bind(this), 3000);
                     this.user.run = 1;
+                    this.user.runColor = 'red';
+                    //this.render();
                 } else {
                     clearInterval(this.timerId);
                     this.user.run = 0;
+                    this.user.runColor = 'black';
+                    this.render();
                 }
+                break;
             }
         }
     }
