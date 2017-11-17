@@ -1,30 +1,9 @@
 form.queue__form
     fieldset.queue__fieldset
         legend= translation.queue_legend[lang]
-        textarea.queue__param(
-            readonly
-            name='param'
-            placeholder=translation.queue_textarea1_placeholder[lang]
-        )= JSON.stringify(data.gui.param)
-        span &#160;
-        textarea.queue__forceCmd(
-            readonly
-            name='forceCmd'
-            placeholder=translation.queue_textarea2_placeholder[lang]
-        )= JSON.stringify(data.gui.forceCmd)
-        span &#160;
-        textarea.queue__cmd(
-            readonly
-            name='cmd'
-            placeholder=translation.queue_textarea3_placeholder[lang]
-        )= JSON.stringify(data.gui.cmd)
-        span &#160;
-        textarea.queue__sendTime(
-            readonly
-            name='sendTime'
-            placeholder=translation.queue_textarea4_placeholder[lang]
-        )= JSON.stringify(data.gui.sendTime)
-        span &#160;
+        each val, key in data.gui
+            include queueGuiItem.pug
+
         button.queue__button(
             type='submit'
         )= translation.queue_button_submit[lang]
@@ -34,59 +13,11 @@ form.queue__form
             data-action='run'
             style='color: ' + runColor
         )= translation.queue_button_start[lang]
+        span &#160;
 
         <br>
         <br>
 
-        textarea.queue__params(
-            readonly
-            name='params'
-            placeholder=translation.queue_textarea1_placeholder[lang]
-        )= JSON.stringify(data.dev.params)
-        span &#160;
-        textarea.queue__forceCmds(
-            readonly
-            name='forceCmds'
-            placeholder=translation.queue_textarea2_placeholder[lang]
-        )= JSON.stringify(data.dev.forceCmds)
-        span &#160;
-        textarea.queue__cmds(
-            readonly
-            name='cmds'
-            placeholder=translation.queue_textarea3_placeholder[lang]
-        )= JSON.stringify(data.dev.cmds)
-        span &#160;
-        textarea.queue__sendTime(
-            readonly
-            name='sendTime'
-            placeholder=translation.queue_textarea4_placeholder[lang]
-        )= JSON.stringify(data.dev.sendTime)
-        span &#160;
-        textarea.queue__queue(
-            readonly
-            name='queue'
-            placeholder=translation.queue_textarea5_placeholder[lang]
-        )= JSON.stringify(data.dev.queue)
-        span &#160;
-        textarea.queue__done(
-            readonly
-            name='done'
-            placeholder=translation.queue_textarea6_placeholder[lang]
-        )= JSON.stringify(data.dev.done)
-        span &#160;
-        textarea.queue__getTime(
-            readonly
-            name='getTime'
-            placeholder=translation.queue_textarea7_placeholder[lang]
-        )= JSON.stringify(data.dev.getTime)
-
-        <br>
-        <br>
-
-div.test
-    each val, key in data.gui
-        include queueGuiItem.pug
-div.test
-    each val, key in data.dev
-        include queueDevItem.pug
+        each val, key in data.dev
+            include queueDevItem.pug
 
