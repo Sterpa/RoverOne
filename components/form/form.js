@@ -30,23 +30,23 @@
          */
         getNewDataLocal() {
             return new Promise((resolve, reject) => {
-                let params = this.el.querySelector('textarea[name="params"]').value;
-                if (params[0] != '{') {
-                    params = `{${params}}`;
+                let param = this.el.querySelector('textarea[name="param"]').value;
+                if (param[0] != '{') {
+                    param = `{${param}}`;
                 };
-                let forceCmds = this.el.querySelector('textarea[name="forceCmds"]').value;
-                if (forceCmds[0] != '[') {
-                    forceCmds = `[${forceCmds}]`;
+                let forceCmd = this.el.querySelector('textarea[name="forceCmd"]').value;
+                if (forceCmd[0] != '[') {
+                    forceCmd = `[${forceCmd}]`;
                 };
-                let cmds = this.el.querySelector('textarea[name="cmds"]').value;
-                if (cmds[0] != '[') {
-                    cmds = `[${cmds}]`;
+                let cmd = this.el.querySelector('textarea[name="cmd"]').value;
+                if (cmd[0] != '[') {
+                    cmd = `[${cmd}]`;
                 };
                 try {
                     this.user.dataLocal.gui = {
-                        params: JSON.parse(params),
-                        forceCmds: JSON.parse(forceCmds),
-                        cmds: JSON.parse(cmds),
+                        param: JSON.parse(param),
+                        forceCmd: JSON.parse(forceCmd),
+                        cmd: JSON.parse(cmd),
                         sendTime: new Date()
                     };
                 } catch (error) {

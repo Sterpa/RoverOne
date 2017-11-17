@@ -80,22 +80,13 @@ form.queue__form
             placeholder=translation.queue_textarea7_placeholder[lang]
         )= JSON.stringify(data.dev.getTime)
 
-div.menu
-    span.menu__title
-        h3= title
-    ul.menu__list
-        each item, index in items
-            include menuItem.pug
+        <br>
+        <br>
 
-li.menu__item(data-index=index)
-    span.menu__day(
-        data-action='pick'
-    )= item.day
-        span &#160;-&#160;
-    a.menu__link(
-        href=item.href
-        data-action='pick'
-    )= item.anchor
-    button.close.menu__remove-button(
-        data-action='remove'
-    )= '[X]'
+div.test
+    each val, key in data.gui
+        include queueGuiItem.pug
+div.test
+    each val, key in data.dev
+        include queueDevItem.pug
+
