@@ -29,9 +29,9 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 data: {
                     gui: {
-                        params: {},
-                        forceCmds: [],
-                        cmds: [],
+                        param: {},
+                        forceCmd: [],
+                        cmd: [],
                         sendTime: 0
                     },
                     dev: {
@@ -46,9 +46,9 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 dataLocal: {
                     gui: {
-                        params: {},
-                        forceCmds: [],
-                        cmds: [],
+                        param: {},
+                        forceCmd: [],
+                        cmd: [],
                         sendTime: 0
                     },
                     dev: {
@@ -63,9 +63,9 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 dataDev: {
                     gui: {
-                        params: {},
-                        forceCmds: [],
-                        cmds: [],
+                        param: {},
+                        forceCmd: [],
+                        cmd: [],
                         sendTime: 0
                     },
                     dev: {

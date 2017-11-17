@@ -3,21 +3,21 @@ form.queue__form
         legend= translation.queue_legend[lang]
         textarea.queue__param(
             readonly
-            name='params'
+            name='param'
             placeholder=translation.queue_textarea1_placeholder[lang]
-        )= JSON.stringify(data.gui.params)
+        )= JSON.stringify(data.gui.param)
         span &#160;
         textarea.queue__forceCmd(
             readonly
-            name='forceCmds'
+            name='forceCmd'
             placeholder=translation.queue_textarea2_placeholder[lang]
-        )= JSON.stringify(data.gui.forceCmds)
+        )= JSON.stringify(data.gui.forceCmd)
         span &#160;
         textarea.queue__cmd(
             readonly
-            name='cmds'
+            name='cmd'
             placeholder=translation.queue_textarea3_placeholder[lang]
-        )= JSON.stringify(data.gui.cmds)
+        )= JSON.stringify(data.gui.cmd)
         span &#160;
         textarea.queue__sendTime(
             readonly
@@ -38,19 +38,19 @@ form.queue__form
         <br>
         <br>
 
-        textarea.queue__param(
+        textarea.queue__params(
             readonly
             name='params'
             placeholder=translation.queue_textarea1_placeholder[lang]
         )= JSON.stringify(data.dev.params)
         span &#160;
-        textarea.queue__forceCmd(
+        textarea.queue__forceCmds(
             readonly
             name='forceCmds'
             placeholder=translation.queue_textarea2_placeholder[lang]
         )= JSON.stringify(data.dev.forceCmds)
         span &#160;
-        textarea.queue__cmd(
+        textarea.queue__cmds(
             readonly
             name='cmds'
             placeholder=translation.queue_textarea3_placeholder[lang]
@@ -79,3 +79,23 @@ form.queue__form
             name='getTime'
             placeholder=translation.queue_textarea7_placeholder[lang]
         )= JSON.stringify(data.dev.getTime)
+
+div.menu
+    span.menu__title
+        h3= title
+    ul.menu__list
+        each item, index in items
+            include menuItem.pug
+
+li.menu__item(data-index=index)
+    span.menu__day(
+        data-action='pick'
+    )= item.day
+        span &#160;-&#160;
+    a.menu__link(
+        href=item.href
+        data-action='pick'
+    )= item.anchor
+    button.close.menu__remove-button(
+        data-action='remove'
+    )= '[X]'
