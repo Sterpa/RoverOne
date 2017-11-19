@@ -1,21 +1,13 @@
 form.form__form
     fieldset.form__fieldset
         legend= translation.form_legend[lang]
-        textarea.form__cmd(
-            name='cmd'
-            placeholder=translation.form_textarea3_placeholder[lang]
-        )
-        span &#160;
-        textarea.form__forceCmd(
-            name='forceCmd'
-            placeholder=translation.form_textarea2_placeholder[lang]
-        )
-        span &#160;
-        textarea.form__param(
-            name='param'
-            placeholder=translation.form_textarea1_placeholder[lang]
-        )
-        span &#160;
+        each val, key in dataLocal2.gui
+            textarea.form__gui(
+                name=key
+                placeholder=translation[`form_${key}_placeholder`][lang]
+            )
+            span &#160;
+        <br>
         button.form__button(
             type='submit'
         )= translation.form_button_submit[lang]

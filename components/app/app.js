@@ -61,6 +61,13 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                         getTime: []
                     }
                 },
+                dataLocal2: {
+                    gui: {
+                        cmd: [],
+                        forceCmd: [],
+                        param: {}
+                    }
+                },
                 dataDev: {
                     gui: {
                         param: {},

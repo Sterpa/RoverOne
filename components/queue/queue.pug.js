@@ -9,35 +9,35 @@ function pug_style(r){if(!r)return"";if("object"==typeof r){var t="";for(var e i
   if ('number' == typeof $$obj.length) {
       for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
         var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Cdiv\u003E\u003Cp\u003E" + (pug_escape(null == (pug_interp = key) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003C\u002Fdiv\u003E";
       }
   } else {
     var $$l = 0;
     for (var key in $$obj) {
       $$l++;
       var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Cdiv\u003E\u003Cp\u003E" + (pug_escape(null == (pug_interp = key) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003C\u002Fdiv\u003E";
     }
   }
 }).call(this);
 
-pug_html = pug_html + "\u003Cbutton class=\"queue__button\" type=\"submit\"\u003E" + (pug_escape(null == (pug_interp = translation.queue_button_submit[lang]) ? "" : pug_interp)) + "\u003C\u002Fbutton\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003Cbutton" + (" class=\"queue__buttonStart\""+" type=\"button\" data-action=\"run\""+pug_attr("style", pug_style('color: ' + runColor), true, false)) + "\u003E" + (pug_escape(null == (pug_interp = translation.queue_button_start[lang]) ? "" : pug_interp)) + "\u003C\u002Fbutton\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003Cbr\u003E\n\u003Cbr\u003E";
+pug_html = pug_html + "\u003Cbr\u003E";
 // iterate data.dev
 ;(function(){
   var $$obj = data.dev;
   if ('number' == typeof $$obj.length) {
       for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
         var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
       }
   } else {
     var $$l = 0;
     for (var key in $$obj) {
       $$l++;
       var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
     }
   }
 }).call(this);
 
-pug_html = pug_html + "\u003C\u002Ffieldset\u003E\u003C\u002Fform\u003E";}.call(this,"JSON" in locals_for_with?locals_for_with.JSON:typeof JSON!=="undefined"?JSON:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"lang" in locals_for_with?locals_for_with.lang:typeof lang!=="undefined"?lang:undefined,"runColor" in locals_for_with?locals_for_with.runColor:typeof runColor!=="undefined"?runColor:undefined,"translation" in locals_for_with?locals_for_with.translation:typeof translation!=="undefined"?translation:undefined));;return pug_html;}
+pug_html = pug_html + "\u003Cbr\u003E\u003Cbutton class=\"queue__button\" type=\"submit\"\u003E" + (pug_escape(null == (pug_interp = translation.queue_button_submit[lang]) ? "" : pug_interp)) + "\u003C\u002Fbutton\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003Cbutton" + (" class=\"queue__buttonStart\""+" type=\"button\" data-action=\"run\""+pug_attr("style", pug_style('color: ' + runColor), true, false)) + "\u003E" + (pug_escape(null == (pug_interp = translation.queue_button_start[lang]) ? "" : pug_interp)) + "\u003C\u002Fbutton\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003C\u002Ffieldset\u003E\u003C\u002Fform\u003E";}.call(this,"JSON" in locals_for_with?locals_for_with.JSON:typeof JSON!=="undefined"?JSON:undefined,"data" in locals_for_with?locals_for_with.data:typeof data!=="undefined"?data:undefined,"lang" in locals_for_with?locals_for_with.lang:typeof lang!=="undefined"?lang:undefined,"runColor" in locals_for_with?locals_for_with.runColor:typeof runColor!=="undefined"?runColor:undefined,"translation" in locals_for_with?locals_for_with.translation:typeof translation!=="undefined"?translation:undefined));;return pug_html;}

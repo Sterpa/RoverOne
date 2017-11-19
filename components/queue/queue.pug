@@ -2,8 +2,23 @@ form.queue__form
     fieldset.queue__fieldset
         legend= translation.queue_legend[lang]
         each val, key in data.gui
-            include queueGuiItem.pug
-
+            div
+                p= key
+                textarea.queue__gui(
+                    readonly
+                    name=key
+                    placeholder=translation.queue_textarea_placeholder[lang]
+                )= JSON.stringify(data.gui[key])
+                span &#160;
+        <br>
+        each val, key in data.dev
+            textarea.queue__dev(
+                readonly
+                name=key
+                placeholder=translation.queue_textarea_placeholder[lang]
+            )= JSON.stringify(data.dev[key])
+            span &#160;
+        <br>
         button.queue__button(
             type='submit'
         )= translation.queue_button_submit[lang]
@@ -14,10 +29,3 @@ form.queue__form
             style='color: ' + runColor
         )= translation.queue_button_start[lang]
         span &#160;
-
-        <br>
-        <br>
-
-        each val, key in data.dev
-            include queueDevItem.pug
-
