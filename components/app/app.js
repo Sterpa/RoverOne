@@ -29,15 +29,15 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 data: {
                     gui: {
-                        param: {},
-                        forceCmd: [],
                         cmd: [],
+                        forceCmd: [],
+                        param: {},
                         sendTime: 0
                     },
                     dev: {
-                        params: [{}],
-                        forceCmds: [[]],
                         cmds: [[]],
+                        forceCmds: [[]],
+                        params: [{}],
                         sendTime: [],
                         queue: [],
                         done: [],
@@ -46,15 +46,15 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 dataLocal: {
                     gui: {
-                        param: {},
-                        forceCmd: [],
                         cmd: [],
+                        forceCmd: [],
+                        param: {},
                         sendTime: 0
                     },
                     dev: {
-                        params: [{}],
-                        forceCmds: [[]],
                         cmds: [[]],
+                        forceCmds: [[]],
+                        params: [{}],
                         sendTime: [],
                         queue: [],
                         done: [],
@@ -70,15 +70,15 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 },
                 dataDev: {
                     gui: {
-                        param: {},
-                        forceCmd: [],
                         cmd: [],
+                        forceCmd: [],
+                        param: {},
                         sendTime: 0
                     },
                     dev: {
-                        params: [{}],
-                        forceCmds: [[]],
-                        cmds: [[]],
+                        cmd: [],
+                        forceCmd: [],
+                        param: [],
                         sendTime: [],
                         queue: [],
                         done: [],
@@ -96,6 +96,11 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
 
             this.queue = new Queue({
                 el: this.el.querySelector('.js-app-queue'),
+                user: this.user
+            });
+
+            this.queue = new Dev({
+                el: this.el.querySelector('.js-app-dev'),
                 user: this.user
             });
         }

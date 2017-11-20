@@ -2,9 +2,17 @@ form.form__form
     fieldset.form__fieldset
         legend= translation.form_legend[lang]
         each val, key in dataLocal2.gui
+            textarea.form__gui-fieldname(
+                readonly
+                disabled
+                rows='1'
+            )= translation[`${key}_fieldname`][lang]
+            span &#160;
+        <br>
+        each val, key in dataLocal2.gui
             textarea.form__gui(
                 name=key
-                placeholder=translation[`form_${key}_placeholder`][lang]
+                placeholder=translation[`${key}_placeholder`][lang]
             )
             span &#160;
         <br>

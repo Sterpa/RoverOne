@@ -9,14 +9,52 @@ function pug_style(r){if(!r)return"";if("object"==typeof r){var t="";for(var e i
   if ('number' == typeof $$obj.length) {
       for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
         var val = $$obj[key];
-pug_html = pug_html + "\u003Cdiv\u003E\u003Cp\u003E" + (pug_escape(null == (pug_interp = key) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Ctextarea class=\"queue__gui-fieldname\" readonly=\"readonly\" disabled=\"disabled\" rows=\"1\"\u003E" + (pug_escape(null == (pug_interp = translation[`${key}_fieldname`][lang]) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
       }
   } else {
     var $$l = 0;
     for (var key in $$obj) {
       $$l++;
       var val = $$obj[key];
-pug_html = pug_html + "\u003Cdiv\u003E\u003Cp\u003E" + (pug_escape(null == (pug_interp = key) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Ctextarea class=\"queue__gui-fieldname\" readonly=\"readonly\" disabled=\"disabled\" rows=\"1\"\u003E" + (pug_escape(null == (pug_interp = translation[`${key}_fieldname`][lang]) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003Cbr\u003E";
+// iterate data.gui
+;(function(){
+  var $$obj = data.gui;
+  if ('number' == typeof $$obj.length) {
+      for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
+        var val = $$obj[key];
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation[`${key}_placeholder`][lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var key in $$obj) {
+      $$l++;
+      var val = $$obj[key];
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__gui\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation[`${key}_placeholder`][lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.gui[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003Cbr\u003E\n\u003Cbr\u003E";
+// iterate data.dev
+;(function(){
+  var $$obj = data.dev;
+  if ('number' == typeof $$obj.length) {
+      for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
+        var val = $$obj[key];
+pug_html = pug_html + "\u003Ctextarea class=\"queue__dev-fieldname\" readonly=\"readonly\" disabled=\"disabled\" rows=\"1\"\u003E" + (pug_escape(null == (pug_interp = translation[`${key}_fieldname`][lang]) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var key in $$obj) {
+      $$l++;
+      var val = $$obj[key];
+pug_html = pug_html + "\u003Ctextarea class=\"queue__dev-fieldname\" readonly=\"readonly\" disabled=\"disabled\" rows=\"1\"\u003E" + (pug_escape(null == (pug_interp = translation[`${key}_fieldname`][lang]) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
     }
   }
 }).call(this);
@@ -28,14 +66,14 @@ pug_html = pug_html + "\u003Cbr\u003E";
   if ('number' == typeof $$obj.length) {
       for (var key = 0, $$l = $$obj.length; key < $$l; key++) {
         var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation[`${key}_placeholder`][lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
       }
   } else {
     var $$l = 0;
     for (var key in $$obj) {
       $$l++;
       var val = $$obj[key];
-pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation.queue_textarea_placeholder[lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
+pug_html = pug_html + "\u003Ctextarea" + (" class=\"queue__dev\""+" readonly=\"readonly\""+pug_attr("name", key, true, false)+pug_attr("placeholder", translation[`${key}_placeholder`][lang], true, false)) + "\u003E" + (pug_escape(null == (pug_interp = JSON.stringify(data.dev[key])) ? "" : pug_interp)) + "\u003C\u002Ftextarea\u003E\u003Cspan\u003E&#160;\u003C\u002Fspan\u003E";
     }
   }
 }).call(this);
