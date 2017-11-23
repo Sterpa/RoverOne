@@ -103,6 +103,9 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 el: this.el.querySelector('.js-app-dev'),
                 user: this.user
             });
+
+            this.firebaseInit();
+            this.add([23, 45]);
         }
 
         /**
@@ -114,6 +117,65 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
             this.user.url.data = BASE_URL + '/' + userId + '/' + devId + '.json';
             this.user.url.gui = BASE_URL + '/' + userId + '/' + devId + '/gui.json';
             this.user.url.dev = BASE_URL + '/' + userId + '/' + devId + '/dev.json';
+        }
+
+        /**
+         * Init Firebase Firestore
+         */
+        firebaseInit() {
+            // Initialize Firebase
+            let config = {
+                apiKey: 'AIzaSyAOC8aUUIjxq7LGqcBnntUJ-fOf3NsE6Us',
+                authDomain: 'duna2chat.firebaseapp.com',
+                databaseURL: 'https://duna2chat.firebaseio.com',
+                projectId: 'duna2chat',
+                storageBucket: 'duna2chat.appspot.com',
+                messagingSenderId: '815694703942'
+            };
+            firebase.initializeApp(config);
+
+            // Initialize Cloud Firestore through Firebase
+            this.user.db = firebase.firestore();
+        }
+
+        /**
+         * Add data to Firestore
+         * @param {Object} data
+         */
+        add(data) {
+            this.user.db.collection('users').add({
+                first: 'Ada',
+                last: 'Lovelace',
+                born: 1815,
+                data: data
+            })
+            .then((docRef) => {
+                console.log('Document written with ID: ', docRef.id);
+            })
+            .then((resp) => {
+                this.user.db.collection('users').get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        //console.log(`${doc.id} => ${doc.data()}`);
+                        console.log(doc.data());
+                    });
+                });
+            })
+            .catch((error) => {
+                console.error('Error adding document: ', error);
+            });
+        }
+
+        /**
+         * Get data from Firestore
+         */
+        get() {
+            this.user.db.collection('users').get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(`${doc.id} => ${doc.data()}`);
+                });
+            });
         }
     }
 
