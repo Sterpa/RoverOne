@@ -104,8 +104,11 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 user: this.user
             });
 
-            this.firebaseInit();
-            this.add([23, 45]);
+            //this.firebaseInit();
+            //this.add([23, 45]);
+
+            this.databaseInit();
+            this.add2();
         }
 
         /**
@@ -122,7 +125,7 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
         /**
          * Init Firebase Firestore
          */
-        firebaseInit() {
+        firestoreInit() {
             // Initialize Firebase
             let config = {
                 apiKey: 'AIzaSyAOC8aUUIjxq7LGqcBnntUJ-fOf3NsE6Us',
@@ -136,6 +139,25 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
 
             // Initialize Cloud Firestore through Firebase
             this.user.db = firebase.firestore();
+        }
+
+        /**
+         * Init Firebase Realtime Database
+         */
+        databaseInit() {
+            // Initialize Database
+            let config = {
+                apiKey: 'AIzaSyAOC8aUUIjxq7LGqcBnntUJ-fOf3NsE6Us',
+                authDomain: 'duna2chat.firebaseapp.com',
+                databaseURL: 'https://duna2chat.firebaseio.com',
+                projectId: 'duna2chat',
+                storageBucket: 'duna2chat.appspot.com',
+                messagingSenderId: '815694703942'
+            };
+            firebase.initializeApp(config);
+
+            // Get a reference to the database service
+            this.user.db = firebase.database();
         }
 
         /**
@@ -164,6 +186,32 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
             .catch((error) => {
                 console.error('Error adding document: ', error);
             });
+        }
+
+        /**
+         * Add data to Firestore
+         * @param {Object} data
+         * @return {Promise<*>}
+         */
+        add2(data) {
+            // Get a key for a new Post.
+            //let newPostKey = firebase.database().ref().child('posts').push().key;
+            let newPostKey = (new Date()).getTime();
+            console.log(newPostKey);
+
+            // A post entry.
+            let postData = {
+                first: 'Ada',
+                last: 'Lovelace',
+                born: 1815
+            };
+
+            // Write the new post's data simultaneously in the posts list and the user's post list.
+            let updates = {};
+            updates['/posts/' + newPostKey] = postData;
+            console.log(updates);
+
+            return this.user.db.ref('users').update(updates);
         }
 
         /**
