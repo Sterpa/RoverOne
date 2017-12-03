@@ -104,11 +104,7 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
                 user: this.user
             });
 
-            //this.firebaseInit();
-            //this.add([23, 45]);
-
             this.databaseInit();
-            this.add2();
         }
 
         /**
@@ -120,25 +116,6 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
             this.user.url.data = BASE_URL + '/' + userId + '/' + devId + '.json';
             this.user.url.gui = BASE_URL + '/' + userId + '/' + devId + '/gui.json';
             this.user.url.dev = BASE_URL + '/' + userId + '/' + devId + '/dev.json';
-        }
-
-        /**
-         * Init Firebase Firestore
-         */
-        firestoreInit() {
-            // Initialize Firebase
-            let config = {
-                apiKey: 'AIzaSyAOC8aUUIjxq7LGqcBnntUJ-fOf3NsE6Us',
-                authDomain: 'duna2chat.firebaseapp.com',
-                databaseURL: 'https://duna2chat.firebaseio.com',
-                projectId: 'duna2chat',
-                storageBucket: 'duna2chat.appspot.com',
-                messagingSenderId: '815694703942'
-            };
-            firebase.initializeApp(config);
-
-            // Initialize Cloud Firestore through Firebase
-            this.user.db = firebase.firestore();
         }
 
         /**
@@ -162,68 +139,18 @@ const BASE_URL = 'https://duna2chat.firebaseio.com/roverone';
 
         /**
          * Add data to Firestore
-         * @param {Object} data
-         */
-        add(data) {
-            this.user.db.collection('users').add({
-                first: 'Ada',
-                last: 'Lovelace',
-                born: 1815,
-                data: data
-            })
-            .then((docRef) => {
-                console.log('Document written with ID: ', docRef.id);
-            })
-            .then((resp) => {
-                this.user.db.collection('users').get()
-                .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        //console.log(`${doc.id} => ${doc.data()}`);
-                        console.log(doc.data());
-                    });
-                });
-            })
-            .catch((error) => {
-                console.error('Error adding document: ', error);
-            });
-        }
-
-        /**
-         * Add data to Firestore
-         * @param {Object} data
+         * @param {Object} postData
          * @return {Promise<*>}
          */
-        add2(data) {
+        add(postData) {
             // Get a key for a new Post.
-            //let newPostKey = firebase.database().ref().child('posts').push().key;
             let newPostKey = (new Date()).getTime();
-            console.log(newPostKey);
 
-            // A post entry.
-            let postData = {
-                first: 'Ada',
-                last: 'Lovelace',
-                born: 1815
-            };
-
-            // Write the new post's data simultaneously in the posts list and the user's post list.
+            // Write the new post's data posts list.
             let updates = {};
-            updates['/posts/' + newPostKey] = postData;
-            console.log(updates);
+            updates[`/${this.userId}/${this.devId}/gui/${newPostKey}`] = postData;
 
-            return this.user.db.ref('users').update(updates);
-        }
-
-        /**
-         * Get data from Firestore
-         */
-        get() {
-            this.user.db.collection('users').get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    console.log(`${doc.id} => ${doc.data()}`);
-                });
-            });
+            return this.user.db.ref('roverone').update(updates);
         }
     }
 
